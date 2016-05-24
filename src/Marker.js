@@ -63,6 +63,10 @@ export default class Marker extends Component {
   state = {
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.shouldMarkerUpdate ? this.props.shouldMarkerUpdate(nextProps, nextState) : false;
+  }
+
   componentWillMount() {
     if (!canUseDOM) {
       return;

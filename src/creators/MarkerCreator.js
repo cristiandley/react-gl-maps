@@ -36,6 +36,7 @@ export const markerControlledPropTypes = {
   title: PropTypes.string,
   visible: PropTypes.bool,
   zIndex: PropTypes.number,
+  shouldMarkerUpdate: PropTypes.func
 };
 
 export const markerDefaultPropTypes = defaultPropsCreator(markerControlledPropTypes);
