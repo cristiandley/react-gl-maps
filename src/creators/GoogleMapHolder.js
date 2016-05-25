@@ -30,6 +30,7 @@ export const mapControlledPropTypes = {
   streetView: PropTypes.any,
   tilt: PropTypes.number,
   zoom: PropTypes.number,
+  styles: PropTypes.array,
 };
 
 export const mapDefaultPropTypes = defaultPropsCreator(mapControlledPropTypes);
