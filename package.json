@@ -1,5 +1,5 @@
 {
-  "name": "react-gmaps",
+  "name": "react-gl-maps",
   "version": "4.10.1",
   "description": "React.js Google Maps integration component based on tomchentw react-google-maps",
   "main": "lib/index.js",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cristiandley/react-googlemaps"
+    "url": "https://github.com/cristiandley/react-gl-maps"
   },
   "keywords": [
     "React.js",
@@ -59,9 +59,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cristiandley/react-gmaps/issues"
+    "url": "https://github.com/cristiandley/react-gl-maps/issues"
   },
-  "homepage": "https://cristiandley.github.io/react-gmaps/",
+  "homepage": "https://github.com/cristiandley/react-gl-maps",
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
