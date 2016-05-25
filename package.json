@@ -1,6 +1,6 @@
 {
   "name": "react-gl-maps",
-  "version": "4.10.2",
+  "version": "4.10.5",
   "description": "React.js Google Maps integration component based on tomchentw react-google-maps",
   "main": "lib/index.js",
   "files": [
