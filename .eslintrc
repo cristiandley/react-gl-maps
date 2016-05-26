@@ -16,6 +16,8 @@
     "react"
   ],
   "rules": {
+    "max-len": [1, {"code": 220}],
+    "no-restricted-syntax": [0],
     // Possible Errors
     "comma-dangle": [2, "always-multiline"],
     // Best Practices
@@ -30,8 +32,8 @@
     "no-underscore-dangle": [0],
     "quotes": [2, "backtick"],
     // React extensions
-    "react/sort-comp": [1],
-    "react/prop-types": [1],
+    "react/sort-comp": [0],
+    "react/prop-types": [1, {"ignore": ["children"]}],
   },
   "globals": {
     "google": true,
