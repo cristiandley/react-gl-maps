@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { default as addDefaultPrefix } from "./addDefaultPrefix";
 
 export default function defaultPropsCreator(propTypes) {

@@ -45,3 +45,4 @@ public/**/assets
 public/**/*.html
 public/*.gz
 tmp/*
+lib/*

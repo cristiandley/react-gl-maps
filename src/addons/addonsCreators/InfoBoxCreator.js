@@ -59,6 +59,7 @@ export default class InfoBoxCreator extends Component {
     // have "google" on the server, we can not use it in server-side rendering.
     // As a result, we import "google-maps-infobox" here to prevent an error on
     // a isomorphic server.
+    // eslint-disable-next-line global-require
     const GoogleMapsInfobox = require(`google-maps-infobox`);
     // http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/reference.html
     const infoBox = new GoogleMapsInfobox(composeOptions(infoBoxProps, infoBoxControlledPropTypes));

@@ -5,7 +5,7 @@ import {
   Children,
 } from "react";
 
-import { default as SkeletonEventList } from "../eventLists/SkeletonEventList";
+import { default as SkeletonEventList } from "../eventLists/_SkeletonEventList";
 import { default as eventHandlerCreator } from "../utils/eventHandlerCreator";
 import { default as defaultPropsCreator } from "../utils/defaultPropsCreator";
 import { default as composeOptions } from "../utils/composeOptions";

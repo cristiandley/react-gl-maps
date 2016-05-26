@@ -89,9 +89,14 @@ export default class MarkerClusterer extends Component {
 
   render() {
     if (this.state.markerClusterer) {
+      let { children, ...restProps } = this.props;
+
       return (
-        <MarkerClustererCreator markerClusterer={ this.state.markerClusterer } { ...this.props }>
-          { this.props.children }
+        <MarkerClustererCreator
+          markerClusterer={this.state.markerClusterer}
+          {...restProps}
+        >
+          {children}
         </MarkerClustererCreator>
       );
     } else {

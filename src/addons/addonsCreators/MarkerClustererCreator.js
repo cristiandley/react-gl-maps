@@ -73,18 +73,17 @@ export const markerClustererEventPropTypes = eventPropTypes;
   updaters: markerClustererUpdaters,
 })
 export default class MarkerClustererCreator extends Component {
-  static PropTypes = {
+  static propTypes = {
     mapHolderRef: PropTypes.instanceOf(GoogleMapHolder).isRequired,
     markerClusterer: PropTypes.object.isRequired,
   }
 
   static _createMarkerClusterer(mapHolderRef, markerClustererProps) {
+    // eslint-disable-next-line global-require
     const GoogleMarkerClusterer = require(`marker-clusterer-plus`);
 
     // http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/docs/reference.html#events
-    const markerClusterer = new GoogleMarkerClusterer(mapHolderRef.getMap(), [], composeOptions(markerClustererProps, markerClustererControlledPropTypes));
-
-    return markerClusterer;
+    return new GoogleMarkerClusterer(mapHolderRef.getMap(), [], composeOptions(markerClustererProps, markerClustererControlledPropTypes));
   }
 
   getMarkerClusterer() {
