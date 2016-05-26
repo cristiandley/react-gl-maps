@@ -5,26 +5,14 @@ import {
 } from "react";
 
 import {
-  default as warning,
-} from "warning";
-
-import {
   default as GoogleMapHolder,
   mapDefaultPropTypes,
   mapControlledPropTypes,
   mapEventPropTypes,
 } from "./creators/GoogleMapHolder";
 
-import {
-  default as GoogleMapLoader,
-} from "./GoogleMapLoader";
-
-const USE_NEW_BEHAVIOR_TAG_NAME = `__new_behavior__`;
-
 export default class GoogleMap extends Component {
   static propTypes = {
-    containerTagName: PropTypes.string,
-    containerProps: PropTypes.object,
     map: PropTypes.object,
     // Uncontrolled default[props] - used only in componentDidMount
     ...mapDefaultPropTypes,
@@ -77,40 +65,13 @@ export default class GoogleMap extends Component {
   //
   // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
 
-  componentWillMount() {
-    const { containerTagName } = this.props;
-    const isUsingNewBehavior = USE_NEW_BEHAVIOR_TAG_NAME === containerTagName;
-
-    warning(isUsingNewBehavior,
-`"GoogleMap" with containerTagName is deprecated now and will be removed in next major release (5.0.0).
-Use "GoogleMapLoader" instead. See https://github.com/tomchentw/react-google-maps/pull/157 for more details.`
-    );
-  }
-
   render() {
-    const { containerTagName, containerProps = {}, children, ...mapProps } = this.props;
-    const isUsingNewBehavior = USE_NEW_BEHAVIOR_TAG_NAME === containerTagName;
+    const { children, ...mapProps } = this.props;
 
-    if (isUsingNewBehavior) {
-      return (
-        <GoogleMapHolder {...mapProps}>
-          {children}
-        </GoogleMapHolder>
-      );
-    } else {// ------------ Deprecated ------------
-      const realContainerTagName = (containerTagName === undefined || containerTagName === null) ? `div` : containerTagName;
-
-      return (
-        <GoogleMapLoader
-          ref="loader"
-          containerElement={React.createElement(realContainerTagName, containerProps)}
-          googleMapElement={
-            <GoogleMap ref="delegate" containerTagName={USE_NEW_BEHAVIOR_TAG_NAME} {...mapProps}>
-              {children}
-            </GoogleMap>
-          }
-        />
-      );
-    }
+    return (
+      <GoogleMapHolder {...mapProps}>
+        {children}
+      </GoogleMapHolder>
+    );
   }
 }

@@ -17,8 +17,8 @@ import {
 } from "warning";
 
 import {
-  GoogleMapLoader,
   GoogleMap,
+  GoogleMapLoader,
 } from "../index";
 
 import {
@@ -43,35 +43,17 @@ export default class ScriptjsLoader extends Component {
     isLoaded: false,
   }
 
-  shouldUseNewBehavior() {
-    const { containerTagName, containerProps } = this.props.googleMapElement.props;
-    return (
-      this.props.containerElement !== undefined &&
-      this.props.containerElement !== null &&
-      containerTagName === undefined &&
-      containerProps === undefined
-    );
-  }
-
   componentWillMount() {
-    warning(this.shouldUseNewBehavior(),
-`"async/ScriptjsLoader" is now rendering "GoogleMapLoader". Migrate to use "GoogleMapLoader" instead.
-The old behavior will be removed in next major release (5.0.0).
-See https://github.com/tomchentw/react-google-maps/pull/157 for more details.`
-    );
     if (!canUseDOM) {
       return;
     }
-    /*
-     * External commonjs require dependency -- begin
-     */
+
+    // External commonjs require dependency
+    // eslint-disable-next-line global-require
     const scriptjs = require(`scriptjs`);
-    /*
-     * External commonjs require dependency -- end
-     */
+
     const { protocol, hostname, port, pathname, query } = this.props;
-    const urlObj = { protocol, hostname, port, pathname, query };
-    const url = makeUrl(urlObj);
+    const url = makeUrl({ protocol, hostname, port, pathname, query });
     scriptjs(url, () => this.setState({ isLoaded: true }));
   }
 
@@ -79,23 +61,19 @@ See https://github.com/tomchentw/react-google-maps/pull/157 for more details.`
     if (`production` !== process.env.NODE_ENV) {
       const changedKeys = getUrlObjChangedKeys(this.props, nextProps);
 
-      warning(changedKeys.length === 0, `ScriptjsLoader doesn't support mutating url related props after initial render. Changed props: %s`, `[${ changedKeys.join(`, `) }]`);
+      warning(changedKeys.length === 0, `ScriptjsLoader doesn't support mutating url related props after initial render. Changed props: %s`, `[${changedKeys.join(`, `)}]`);
     }
   }
 
   render() {
-    if (this.state.isLoaded) {
-      const { protocol, hostname, port, pathname, query, loadingElement, ...restProps } = this.props;
+    // Strip private properties
+    // eslint-disable-next-line no-unused-vars
+    const { protocol, hostname, port, pathname, query, loadingElement, ...restProps } = this.props;
 
-      if (this.shouldUseNewBehavior()) {
-        return (
-          <GoogleMapLoader {...restProps} />
-        );
-      } else {// ------------ Deprecated ------------
-        return this.props.googleMapElement;
-      }
+    if (this.state.isLoaded) {
+      return <GoogleMapLoader {...restProps} />;
     } else {
-      return this.props.loadingElement;
+      return loadingElement;
     }
   }
 }

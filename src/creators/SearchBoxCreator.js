@@ -40,6 +40,8 @@ export default class SearchBoxCreator extends Component {
   static propTypes = {
     mapHolderRef: PropTypes.instanceOf(GoogleMapHolder).isRequired,
     searchBox: PropTypes.object.isRequired,
+    controlPosition: PropTypes.object.isRequired,
+    inputElement: PropTypes.object.isRequired,
   }
 
   static _createSearchBox(inputElement, searchBoxProps) {

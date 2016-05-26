@@ -105,10 +105,10 @@ export default class OverlayViewCreator extends Component {
             sw.x += offset.x;
             ne.y += offset.y;
           }
-          left = sw.x + `px`;
-          top = ne.y + `px`;
-          this._containerElement.style.width = (ne.x - sw.x) + `px`;
-          this._containerElement.style.height = (sw.y - ne.y) + `px`;
+          left = `${sw.x}px`;
+          top = `${ne.y}px`;
+          this._containerElement.style.width = `${(ne.x - sw.x)}px`;
+          this._containerElement.style.height = `${(sw.y - ne.y)}px`;
         }
       } else {
         const position = this._getPixelPosition();
@@ -118,8 +118,8 @@ export default class OverlayViewCreator extends Component {
             x += offset.x;
             y += offset.y;
           }
-          left = x + `px`;
-          top = y + `px`;
+          left = `${x}px`;
+          top = `${y}px`;
         }
       }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { default as controlledOrDefault } from "./controlledOrDefault";
 
 export default function composeOptions(props, controlledPropTypes) {
